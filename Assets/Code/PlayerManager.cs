@@ -15,7 +15,10 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
 
+    private void Start()
+    {
         currentActiveIndex = 0;
         for (int i = 0; i < players.Count; i++)
             players[i].SetIsMain(i == 0);

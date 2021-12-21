@@ -23,8 +23,10 @@ public class PlayerController : Player
 
     public bool IsMain { get; set; }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         bool groundedPlayer = characterController.isGrounded;
         if (!groundedPlayer)
         {
@@ -88,5 +90,8 @@ public class PlayerController : Player
     {
         IsMain = isMain;
         cameraController.gameObject.SetActive(isMain);
+
+        if (healthUI != null)
+            healthUI.gameObject.SetActive(!isMain);
     }
 }

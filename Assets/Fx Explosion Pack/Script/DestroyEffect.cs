@@ -3,11 +3,12 @@ using System.Collections;
 
 public class DestroyEffect : MonoBehaviour {
 
+	float time;
+
 	void Update ()
 	{
-
-		if(Input.GetKeyDown(KeyCode.Z) || Input.GetKeyDown(KeyCode.X) || Input.GetKeyDown(KeyCode.C))
-		   Destroy(transform.gameObject);
-	
+		time += Time.deltaTime;
+		if (time >= 3f)
+			Destroy(gameObject);
 	}
 }

@@ -76,6 +76,16 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 24041416635219875, guid: 9d10790834ad83a45a3e8931b74b57a9, type: 3}
   m_PrefabInstance: {fileID: 392348439451396182}
   m_PrefabAsset: {fileID: 0}
+--- !u!23 &370578683680126327 stripped
+MeshRenderer:
+  m_CorrespondingSourceObject: {fileID: 24041417730432289, guid: 9d10790834ad83a45a3e8931b74b57a9, type: 3}
+  m_PrefabInstance: {fileID: 392348439451396182}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &7810251731820288835 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7571237353946805013, guid: 9d10790834ad83a45a3e8931b74b57a9, type: 3}
+  m_PrefabInstance: {fileID: 392348439451396182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &6195974167202197230
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -88,3 +98,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 531d6c9c9d0a83d48bc5713e3c73ab39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  startingHealth: 100
+  healthPosition: {fileID: 7810251731820288835}
+  meshRenderer: {fileID: 370578683680126327}
