@@ -6,6 +6,7 @@ public class ShootLine : MonoBehaviour
 {
     public LineRenderer lineRenderer;
     public float timeToLive = 1f;
+    public float startWidth = 0.05f;
 
     private float time;
 
@@ -18,6 +19,12 @@ public class ShootLine : MonoBehaviour
     {
         time += Time.deltaTime;
         if (time >= timeToLive)
+        {
             Destroy(gameObject);
+        }
+        else
+        {
+            lineRenderer.widthMultiplier = startWidth * (1f - (time / timeToLive));
+        }
     }
 }
