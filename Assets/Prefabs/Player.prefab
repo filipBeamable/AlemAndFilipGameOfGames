@@ -62,7 +62,7 @@ MonoBehaviour:
   rifleParent: {fileID: 5319464757730134491}
   shootPoint: {fileID: 4333082512025525927}
   shootLinePrefab: {fileID: 7091948611546944853, guid: 3f72db0f62625f14985c0692735a6589, type: 3}
-  explosionPrefab: {fileID: 100012, guid: f3a153ef01a92d04dbdf22d8f0dcaa56, type: 3}
+  explosionPrefab: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
   damage: 20
 --- !u!143 &24041416635219870
 CharacterController:
