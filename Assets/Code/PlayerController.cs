@@ -16,6 +16,7 @@ public class PlayerController : Player
     public Transform rifleParent;
     public Transform shootPoint;
     public GameObject shootLinePrefab;
+    public GameObject explosionPrefab;
     public float damage;
 
     private Vector3 gravityVelocity;
@@ -71,9 +72,11 @@ public class PlayerController : Player
                     Player player = hitInfo.collider.GetComponent<Player>();
                     if (player != null)
                         player.OnHit(damage);
+
+                    Instantiate(explosionPrefab).transform.position = endPoint;
                 }
 
-                Instantiate(shootLinePrefab).GetComponent<ShootLine>().Init(shootPoint.position, endPoint);
+                //Instantiate(shootLinePrefab).GetComponent<ShootLine>().Init(shootPoint.position, endPoint);
             }
         }
 
