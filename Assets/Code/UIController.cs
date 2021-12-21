@@ -7,8 +7,6 @@ using UnityEngine;
 
 public class UIController : MonoBehaviour
 {
-{ 
-{
     public static UIController Instance { get; private set; }
 
     public Canvas canvas;
@@ -18,6 +16,7 @@ public class UIController : MonoBehaviour
     [Space]
     public GameObject healthUIPrefab;
     public Transform healthUIParent;
+    public HealthUI mainCharacterHealth;
 
     private IBeamableAPI _api;
 

@@ -59,5 +59,12 @@ public class PlayerManager : MonoBehaviour
         oldPlayer.SetIsMain(false);
         CurrentActivePlayer.SetIsMain(true);
         CurrentActivePlayer.cameraController.LerpFromOldPlayer(oldPlayer);
+
+        UpdateActivePlayerHealth();
+    }
+
+    public void UpdateActivePlayerHealth()
+    {
+        UIController.Instance.mainCharacterHealth.UpdateSlider(CurrentActivePlayer.Health / CurrentActivePlayer.startingHealth);
     }
 }
