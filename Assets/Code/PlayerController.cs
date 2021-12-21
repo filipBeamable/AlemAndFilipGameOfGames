@@ -40,14 +40,8 @@ public class PlayerController : MonoBehaviour
         }
         characterController.Move(moveVelocity.normalized * moveSpeed * Time.deltaTime);
 
-        if (jumpDown)
-        {
-            Debug.LogError("HERE");
-            if (groundedPlayer)
-            {
-                gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
-            }
-        }
+        if (jumpDown && groundedPlayer)
+            gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
 
         gravityVelocity.y -= gravity * Time.deltaTime;
         characterController.Move(gravityVelocity * Time.deltaTime);
