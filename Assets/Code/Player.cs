@@ -45,6 +45,7 @@ public class Player : MonoBehaviour
             gameObject.SetActive(false);
             Destroy(healthUI.gameObject);
             PlayDiedSfx();
+            PlayerManager.Instance.OnPlayerDied();
         }
         else
         {

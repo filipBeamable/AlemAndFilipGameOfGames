@@ -18,6 +18,10 @@ public class UIController : MonoBehaviour
     public Transform healthUIParent;
     public HealthUI mainCharacterHealth;
 
+    [Header("Game Over")]
+    public GameObject gameOverPanel;
+    public TextMeshProUGUI gameOverText;
+
     private IBeamableAPI _api;
 
     private void Awake()
@@ -90,5 +94,13 @@ public class UIController : MonoBehaviour
     public HealthUI InstantiateHealthUI()
     {
         return Instantiate(healthUIPrefab, healthUIParent).GetComponent<HealthUI>();
+    }
+
+    public void GameOver(string text)
+    {
+        Time.timeScale = 0f;
+        Cursor.lockState = CursorLockMode.None;
+        gameOverPanel.SetActive(true);
+        gameOverText.text = text;
     }
 }

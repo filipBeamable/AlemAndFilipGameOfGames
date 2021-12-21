@@ -27,6 +27,9 @@ public class PlayerController : Player
 
     protected override void Update()
     {
+        if (PlayerManager.Instance.IsGameOver)
+            return;
+
         base.Update();
 
         bool groundedPlayer = characterController.isGrounded;

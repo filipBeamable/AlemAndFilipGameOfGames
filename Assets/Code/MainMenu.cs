@@ -8,6 +8,11 @@ public class MainMenu : MonoBehaviour
     public GameObject joinPanel;
     public GameObject waitingPanel;
 
+    private void Start()
+    {
+        Time.timeScale = 1f;
+    }
+
     public void Join()
     {
         joinPanel.SetActive(false);
