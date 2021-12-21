@@ -166,7 +166,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 24041416635219868}
+  myCamera: {fileID: 24041417049294648}
   mouseSensitivity: 500
+  animTime: 0.5
 --- !u!1 &24041417730432294
 GameObject:
   m_ObjectHideFlags: 0
