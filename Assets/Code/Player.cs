@@ -39,11 +39,13 @@ public class Player : MonoBehaviour
     public void OnHit(float damage)
     {
         Health -= damage;
+        PlayerManager.Instance.UpdateActivePlayerHealth();
         if (Health <= 0)
         {
             gameObject.SetActive(false);
             Destroy(healthUI.gameObject);
             PlayDiedSfx();
+            PlayerManager.Instance.OnPlayerDied();
         }
         else
         {

@@ -6,6 +6,8 @@ public class PlayerManager : MonoBehaviour
 {
     public static PlayerManager Instance { get; private set; }
 
+    public bool IsGameOver { get; private set; }
+
     public List<PlayerController> players;
     public List<OtherPlayer> otherPlayers;
     public AudioSource audioSource;
@@ -59,5 +61,58 @@ public class PlayerManager : MonoBehaviour
         oldPlayer.SetIsMain(false);
         CurrentActivePlayer.SetIsMain(true);
         CurrentActivePlayer.cameraController.LerpFromOldPlayer(oldPlayer);
+
+        UpdateActivePlayerHealth();
+    }
+
+    public void UpdateActivePlayerHealth()
+    {
+        UIController.Instance.mainCharacterHealth.UpdateSlider(CurrentActivePlayer.Health / CurrentActivePlayer.startingHealth);
+    }
+
+    public void OnPlayerDied()
+    {
+        bool allDead = true;
+        foreach (Player player in players)
+        {
+            if (player.gameObject.activeSelf)
+            {
+                allDead = false;
+                break;
+            }
+        }
+
+        if (allDead)
+        {
+            OtherPlayerWon();
+            return;
+        }
+
+        allDead = true;
+        foreach (Player player in otherPlayers)
+        {
+            if (player.gameObject.activeSelf)
+            {
+                allDead = false;
+                break;
+            }
+        }
+
+        if (allDead)
+        {
+            LocalPlayerWon();
+            return;
+        }
+    }
+
+    private void LocalPlayerWon()
+    {
+        UIController.Instance.GameOver("YOU WON :)");
+        IsGameOver = true;
+    }
+    private void OtherPlayerWon()
+    {
+        UIController.Instance.GameOver("YOU LOST :(");
+        IsGameOver = true;
     }
 }
