@@ -1,6 +1,16 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/AddressableAssetsData/AssetGroupTemplates/Packed Assets.asset.orig.meta
+guid: 63136daec1bce144989458db8e1de7a6
+DefaultImporter:
+=======
+guid: 0ca89e57f13cdb848882e07cfee85bb1
+NativeFormatImporter:
+>>>>>>> 7c29d1172804fd0fb29fd7b3621a1e0f2a765344:Assets/Rifle/Materials/rifle_mat.mat.meta
+=======
 guid: ddd71ae9cacd1b44991ff0df6da6cb44
 DefaultImporter:
+>>>>>>> 7c29d1172804fd0fb29fd7b3621a1e0f2a765344
   externalObjects: {}
   userData: 
   assetBundleName: 

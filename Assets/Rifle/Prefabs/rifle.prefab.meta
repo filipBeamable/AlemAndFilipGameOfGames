@@ -1,8 +1,12 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/AddressableAssetsData/AssetGroups.meta.orig.meta
+guid: 2e3498d7a29c5bc40aef98b2e7f82d6b
+DefaultImporter:
+=======
 guid: 9a21925963ad72641b17d3da3e0c173f
 NativeFormatImporter:
+>>>>>>> 7c29d1172804fd0fb29fd7b3621a1e0f2a765344:Assets/Rifle/Prefabs/rifle.prefab.meta
   externalObjects: {}
-  mainObjectFileID: 0
   userData: 
   assetBundleName: 
   assetBundleVariant: 

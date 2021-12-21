@@ -1,8 +1,14 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/AddressableAssetsData/AssetGroups/Beamable Assets.asset.orig.meta
+guid: 9106084cdb0f00349a97a718687c51e8
+DefaultImporter:
+  externalObjects: {}
+=======
 guid: d8a4d30b85ebc394b83578ef295efb74
 NativeFormatImporter:
   externalObjects: {}
   mainObjectFileID: 2100000
+>>>>>>> 7c29d1172804fd0fb29fd7b3621a1e0f2a765344:Assets/Rifle/Models/Materials/M4A1_mat.mat.meta
   userData: 
   assetBundleName: 
   assetBundleVariant: 
