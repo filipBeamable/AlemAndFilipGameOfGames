@@ -10,6 +10,11 @@ public class PlayerController : MonoBehaviour
     public float moveSpeed;
     public float jumpHeight;
     public float gravity = 9.8f;
+    public LayerMask groundedCheckLayerMask;
+
+    [Header("Shooting")]
+    public Transform shootPoint;
+    public GameObject shootLinePrefab;
 
     private Vector3 gravityVelocity;
 
@@ -18,6 +23,12 @@ public class PlayerController : MonoBehaviour
     private void Update()
     {
         bool groundedPlayer = characterController.isGrounded;
+        if (!groundedPlayer)
+        {
+            if (Physics.Raycast(new Ray(transform.position + new Vector3(0, 0.05f), Vector3.down), out RaycastHit hitInfo, 0.3f, groundedCheckLayerMask))
+                groundedPlayer = true;
+        }
+
         if (groundedPlayer && gravityVelocity.y < 0)
             gravityVelocity.y = 0f;
 
@@ -45,7 +56,16 @@ public class PlayerController : MonoBehaviour
             characterController.Move(moveVelocity.normalized * moveSpeed * Time.deltaTime);
 
             if (jumpDown && groundedPlayer)
-                gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
+                    gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
+
+            if (Input.GetButtonDown("Fire1"))
+            {
+                Vector3 endPoint = shootPoint.position + (shootPoint.forward * 100);
+                if (Physics.Raycast(new Ray(shootPoint.position, shootPoint.forward), out RaycastHit hitInfo))
+                    endPoint = hitInfo.point;
+
+                Instantiate(shootLinePrefab).GetComponent<ShootLine>().Init(shootPoint.position, endPoint);
+            }
         }
 
         gravityVelocity.y -= gravity * Time.deltaTime;
