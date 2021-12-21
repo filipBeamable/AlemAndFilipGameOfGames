@@ -61,5 +61,5 @@ public class Player : MonoBehaviour
     public void PlayJumpSfx() => PlaySound(jumpSfx);
     public void PlayShootSfx() => PlaySound(shootSfx);
     public void PlayHurtSfx() => PlaySound(hurtSfx);
-    public void PlayDiedSfx() => PlaySound(diedSfx);
+    public void PlayDiedSfx() => PlayerManager.Instance.audioSource.PlayOneShot(diedSfx);
 }

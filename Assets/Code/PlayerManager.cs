@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
 
     public List<PlayerController> players;
     public List<OtherPlayer> otherPlayers;
+    public AudioSource audioSource;
 
     [HideInInspector] public int currentActiveIndex = -1;
     public PlayerController CurrentActivePlayer => players[currentActiveIndex];
