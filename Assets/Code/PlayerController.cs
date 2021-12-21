@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : Player
 {
+    [Space]
     public Transform root;
     public CameraController cameraController;
     public CharacterController characterController;
@@ -15,15 +16,19 @@ public class PlayerController : Player
     [Header("Shooting")]
     public Transform rifleParent;
     public Transform shootPoint;
+    public Animator rifleAnimator;
     public GameObject shootLinePrefab;
+    public GameObject explosionPrefab;
     public float damage;
 
     private Vector3 gravityVelocity;
 
     public bool IsMain { get; set; }
 
-    private void Update()
+    protected override void Update()
     {
+        base.Update();
+
         bool groundedPlayer = characterController.isGrounded;
         if (!groundedPlayer)
         {
@@ -58,10 +63,16 @@ public class PlayerController : Player
             characterController.Move(moveVelocity.normalized * moveSpeed * Time.deltaTime);
 
             if (jumpDown && groundedPlayer)
-                    gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
+            {
+                gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
+                PlayJumpSfx();
+            }
 
             if (Input.GetButtonDown("Fire1"))
             {
+                PlayShootSfx();
+                rifleAnimator.CrossFadeInFixedTime("recoil", 0f);
+
                 Transform cameraTrans = cameraController.transform;
                 Vector3 endPoint = cameraTrans.position + (cameraTrans.forward * 100);
                 if (Physics.Raycast(new Ray(cameraTrans.position, cameraTrans.forward), out RaycastHit hitInfo))
@@ -69,11 +80,13 @@ public class PlayerController : Player
                     endPoint = hitInfo.point;
 
                     Player player = hitInfo.collider.GetComponent<Player>();
-                    if (player != null)
+                    if (player != null && !(player is PlayerController))
                         player.OnHit(damage);
+
+                    Instantiate(explosionPrefab).transform.position = endPoint;
                 }
 
-                Instantiate(shootLinePrefab).GetComponent<ShootLine>().Init(shootPoint.position, endPoint);
+                //Instantiate(shootLinePrefab).GetComponent<ShootLine>().Init(shootPoint.position, endPoint);
             }
         }
 
@@ -85,5 +98,8 @@ public class PlayerController : Player
     {
         IsMain = isMain;
         cameraController.gameObject.SetActive(isMain);
+
+        if (healthUI != null)
+            healthUI.gameObject.SetActive(!isMain);
     }
 }

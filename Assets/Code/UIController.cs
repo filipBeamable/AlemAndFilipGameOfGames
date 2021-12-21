@@ -6,11 +6,26 @@ using TMPro;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
+{
 { 
+{
+    public static UIController Instance { get; private set; }
+
+    public Canvas canvas;
     public TextMeshProUGUI _textbox;
 
     private GameJamMicroserviceClient _msclient;
+    [Space]
+    public GameObject healthUIPrefab;
+    public Transform healthUIParent;
+
     private IBeamableAPI _api;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
+
     async void Start()
     {
         _api = await API.Instance;
@@ -72,4 +87,9 @@ public class UIController : MonoBehaviour
     //        yield return new WaitForSeconds(1f);
     //    }
     //}
+
+    public HealthUI InstantiateHealthUI()
+    {
+        return Instantiate(healthUIPrefab, healthUIParent).GetComponent<HealthUI>();
+    }
 }

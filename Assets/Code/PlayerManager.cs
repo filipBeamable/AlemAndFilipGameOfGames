@@ -8,6 +8,7 @@ public class PlayerManager : MonoBehaviour
 
     public List<PlayerController> players;
     public List<OtherPlayer> otherPlayers;
+    public AudioSource audioSource;
 
     [HideInInspector] public int currentActiveIndex = -1;
     public PlayerController CurrentActivePlayer => players[currentActiveIndex];
@@ -15,7 +16,10 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+    }
 
+    private void Start()
+    {
         currentActiveIndex = 0;
         for (int i = 0; i < players.Count; i++)
             players[i].SetIsMain(i == 0);
