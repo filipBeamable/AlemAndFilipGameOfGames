@@ -17,11 +17,20 @@ MonoBehaviour:
     Enabled: 1
     TemplateId: small
     CustomDockerFileStrings: 
-    IncludeDebugTools: 0
+    IncludeDebugTools: 1
     DebugData:
       Username: root
       Password: Password!
       SshPort: 11100
+  - ServiceName: GameJamMicroservice
+    Enabled: 1
+    TemplateId: small
+    CustomDockerFileStrings: 
+    IncludeDebugTools: 1
+    DebugData:
+      Username: root
+      Password: Password!
+      SshPort: 11101
   StorageObjects: []
   CustomContainerPrefix: 
   AutoReferenceContent: 1

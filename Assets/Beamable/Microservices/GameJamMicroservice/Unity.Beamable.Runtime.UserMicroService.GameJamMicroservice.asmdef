@@ -1,5 +1,5 @@
 {
-    "name": "Unity.Beamable.Runtime.UserMicroService.gamejamservice",
+    "name": "Unity.Beamable.Runtime.UserMicroService.gamejammicroservice",
     "references": [
         "Unity.Beamable.Runtime.Common",
         "Unity.Beamable.Server.Runtime",
