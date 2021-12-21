@@ -1,15 +1,19 @@
 using System;
+using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
-
 
 [Serializable]
 public class PlayerInfo
 {
-    public PlayerInfo() { }
-    public PlayerInfo(Guid id, Guid ownerId)
+    public PlayerInfo()
     {
         Position = new Vector3(0, 0, 0);
         Rotation = new Quaternion(0, 0, 0, 0);
+    }
+    public PlayerInfo(Guid ownerId) : this()
+    {
+        Id = Guid.NewGuid();
         OwnerId = ownerId;
     }
     public Vector3 Position { get; set; }
@@ -18,4 +22,3 @@ public class PlayerInfo
     public Guid Id { get; set; }
     public string Name { get; set; }
 }
-

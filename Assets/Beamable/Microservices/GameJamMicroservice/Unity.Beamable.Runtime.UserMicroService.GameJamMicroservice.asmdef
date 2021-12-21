@@ -1,13 +1,14 @@
 {
     "name": "Unity.Beamable.Runtime.UserMicroService.gamejammicroservice",
+    "rootNamespace": "",
     "references": [
         "Unity.Beamable.Runtime.Common",
         "Unity.Beamable.Server.Runtime",
         "Unity.Beamable.Server.Runtime.Shared",
         "Unity.Beamable",
-        "Beamable.SmallerJSON"
+        "Beamable.SmallerJSON",
+        "Shared"
     ],
-    "optionalUnityReferences": [],
     "includePlatforms": [
         "Editor"
     ],
@@ -16,6 +17,7 @@
     "overrideReferences": true,
     "precompiledReferences": [],
     "autoReferenced": false,
-    "noEngineReferences": false,
-    "defineConstraints": []
+    "defineConstraints": [],
+    "versionDefines": [],
+    "noEngineReferences": false
 }

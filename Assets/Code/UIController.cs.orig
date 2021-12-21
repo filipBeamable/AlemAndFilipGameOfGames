@@ -1,21 +1,27 @@
 using Beamable;
+using Beamable.Server.Clients;
 using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
 
 public class UIController : MonoBehaviour
+<<<<<<< HEAD
+{ 
+    public TextMeshProUGUI _textbox;
+=======
 {
     public static UIController Instance { get; private set; }
 
     public Canvas canvas;
     public TextMeshProUGUI _textbox;
 
-    //private GameJamMicroserviceClient _msclient;
     [Space]
     public GameObject healthUIPrefab;
     public Transform healthUIParent;
+>>>>>>> 9f2f469bb8964b46a55138f946914602c79ab499
 
+    private GameJamMicroserviceClient _msclient;
     private IBeamableAPI _api;
 
     private void Awake()
@@ -26,7 +32,7 @@ public class UIController : MonoBehaviour
     async void Start()
     {
         _api = await API.Instance;
-        //_msclient = new GameJamMicroserviceClient();
+        _msclient = new GameJamMicroserviceClient();
     }
 
     public void CallMicroService()
@@ -50,18 +56,19 @@ public class UIController : MonoBehaviour
 
         //};
 
-       // _msclient.JoinGame(player1Id, "player 1");
-       // _msclient.JoinGame(player2Id, "player 2");
+        _msclient.JoinGame(player1Id, "player 1");
+        _msclient.JoinGame(player2Id, "player 2");
 
-       //var otherPlayersString = _msclient.RefreshGameState(JsonUtility.ToJson(myPlayers))
-       //     .Then((result) =>
-       //     {
-       //         var otherPlayersConcrete = JsonUtility.FromJson<PlayerInfo[]>(result);
-       //        _textbox.text = result;
-       //     });
+       var otherPlayersString = _msclient.RefreshGameState(JsonUtility.ToJson(myPlayers))
+            .Then((result) =>
+            {
+                var otherPlayersConcrete = JsonUtility.FromJson<PlayerInfo[]>(result);
+               _textbox.text = result;
+            });
         
     }
 
+<<<<<<< HEAD
     //IEnumerator StartLongPoling()
     //{
     //    var random = new System.Random();
@@ -84,9 +91,10 @@ public class UIController : MonoBehaviour
     //        yield return new WaitForSeconds(1f);
     //    }
     //}
-
+=======
     public HealthUI InstantiateHealthUI()
     {
         return Instantiate(healthUIPrefab, healthUIParent).GetComponent<HealthUI>();
     }
+>>>>>>> 9f2f469bb8964b46a55138f946914602c79ab499
 }
