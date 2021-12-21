@@ -1,7 +1,20 @@
 fileFormatVersion: 2
+<<<<<<< HEAD
+<<<<<<< HEAD:Assets/AddressableAssetsData/AssetGroups/Built In Data.asset.orig.meta
 guid: 15b348941425e0b4fbf996540caf1c07
 DefaultImporter:
   externalObjects: {}
+=======
+guid: d707e7d8c8078dd489d80a6490e025b4
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+>>>>>>> 7c29d1172804fd0fb29fd7b3621a1e0f2a765344:Assets/TEMP/red 1.mat.meta
+=======
+guid: 8f18b186266918e4b876a5255a6520b3
+DefaultImporter:
+  externalObjects: {}
+>>>>>>> 7c29d1172804fd0fb29fd7b3621a1e0f2a765344
   userData: 
   assetBundleName: 
   assetBundleVariant: 
