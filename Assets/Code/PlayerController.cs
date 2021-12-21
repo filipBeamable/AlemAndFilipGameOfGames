@@ -13,37 +13,48 @@ public class PlayerController : MonoBehaviour
 
     private Vector3 gravityVelocity;
 
+    public bool IsMain { get; set; }
+
     private void Update()
     {
         bool groundedPlayer = characterController.isGrounded;
         if (groundedPlayer && gravityVelocity.y < 0)
             gravityVelocity.y = 0f;
 
-        float horizontal = Input.GetAxis("Horizontal");
-        float vertical = Input.GetAxis("Vertical");
-        bool jumpDown = Input.GetButtonDown("Jump");
-
-        Vector3 moveVelocity = Vector3.zero;
-        if (Mathf.Abs(horizontal) > 0.001f)
+        if (IsMain && !cameraController.IsAnimating)
         {
-            Vector3 right = cameraController.transform.right;
-            right.y = 0;
-            right.Normalize();
-            moveVelocity += right * horizontal;
-        }
-        if (Mathf.Abs(vertical) > 0.001f)
-        {
-            Vector3 forward = cameraController.transform.forward;
-            forward.y = 0;
-            forward.Normalize();
-            moveVelocity += forward * vertical;
-        }
-        characterController.Move(moveVelocity.normalized * moveSpeed * Time.deltaTime);
+            float horizontal = Input.GetAxis("Horizontal");
+            float vertical = Input.GetAxis("Vertical");
+            bool jumpDown = Input.GetButtonDown("Jump");
 
-        if (jumpDown && groundedPlayer)
-            gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
+            Vector3 moveVelocity = Vector3.zero;
+            if (Mathf.Abs(horizontal) > 0.001f)
+            {
+                Vector3 right = cameraController.transform.right;
+                right.y = 0;
+                right.Normalize();
+                moveVelocity += right * horizontal;
+            }
+            if (Mathf.Abs(vertical) > 0.001f)
+            {
+                Vector3 forward = cameraController.transform.forward;
+                forward.y = 0;
+                forward.Normalize();
+                moveVelocity += forward * vertical;
+            }
+            characterController.Move(moveVelocity.normalized * moveSpeed * Time.deltaTime);
+
+            if (jumpDown && groundedPlayer)
+                gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
+        }
 
         gravityVelocity.y -= gravity * Time.deltaTime;
         characterController.Move(gravityVelocity * Time.deltaTime);
+    }
+
+    public void SetIsMain(bool isMain)
+    {
+        IsMain = isMain;
+        cameraController.gameObject.SetActive(isMain);
     }
 }
