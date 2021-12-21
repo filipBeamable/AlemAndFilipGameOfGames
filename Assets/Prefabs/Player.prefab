@@ -49,8 +49,8 @@ MonoBehaviour:
   cameraController: {fileID: 24041417049294648}
   characterController: {fileID: 24041416635219870}
   moveSpeed: 15
-  jumpHeight: 1.5
-  gravity: 9.8
+  jumpHeight: 1.2
+  gravity: 20
   groundedCheckLayerMask:
     serializedVersion: 2
     m_Bits: 55
