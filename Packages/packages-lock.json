@@ -11,6 +11,15 @@
       },
       "url": "https://nexus.beamable.com/nexus/content/repositories/unity"
     },
+    "com.beamable.server": {
+      "version": "0.18.0",
+      "depth": 0,
+      "source": "registry",
+      "dependencies": {
+        "com.beamable": "0.18.0"
+      },
+      "url": "https://nexus.beamable.com/nexus/content/repositories/unity"
+    },
     "com.unity.addressables": {
       "version": "1.16.16",
       "depth": 1,
