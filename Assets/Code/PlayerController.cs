@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerController : MonoBehaviour
+public class PlayerController : Player
 {
     public Transform root;
     public CameraController cameraController;
@@ -13,8 +13,10 @@ public class PlayerController : MonoBehaviour
     public LayerMask groundedCheckLayerMask;
 
     [Header("Shooting")]
+    public Transform rifleParent;
     public Transform shootPoint;
     public GameObject shootLinePrefab;
+    public float damage;
 
     private Vector3 gravityVelocity;
 
@@ -60,9 +62,16 @@ public class PlayerController : MonoBehaviour
 
             if (Input.GetButtonDown("Fire1"))
             {
-                Vector3 endPoint = shootPoint.position + (shootPoint.forward * 100);
-                if (Physics.Raycast(new Ray(shootPoint.position, shootPoint.forward), out RaycastHit hitInfo))
+                Transform cameraTrans = cameraController.transform;
+                Vector3 endPoint = cameraTrans.position + (cameraTrans.forward * 100);
+                if (Physics.Raycast(new Ray(cameraTrans.position, cameraTrans.forward), out RaycastHit hitInfo))
+                {
                     endPoint = hitInfo.point;
+
+                    Player player = hitInfo.collider.GetComponent<Player>();
+                    if (player != null)
+                        player.OnHit(damage);
+                }
 
                 Instantiate(shootLinePrefab).GetComponent<ShootLine>().Init(shootPoint.position, endPoint);
             }

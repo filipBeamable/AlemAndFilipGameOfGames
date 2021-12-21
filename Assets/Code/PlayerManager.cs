@@ -4,13 +4,18 @@ using UnityEngine;
 
 public class PlayerManager : MonoBehaviour
 {
+    public static PlayerManager Instance { get; private set; }
+
     public List<PlayerController> players;
+    public List<OtherPlayer> otherPlayers;
 
     [HideInInspector] public int currentActiveIndex = -1;
     public PlayerController CurrentActivePlayer => players[currentActiveIndex];
 
-    private void Start()
+    private void Awake()
     {
+        Instance = this;
+
         currentActiveIndex = 0;
         for (int i = 0; i < players.Count; i++)
             players[i].SetIsMain(i == 0);
