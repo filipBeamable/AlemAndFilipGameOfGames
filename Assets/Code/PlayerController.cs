@@ -16,6 +16,7 @@ public class PlayerController : Player
     [Header("Shooting")]
     public Transform rifleParent;
     public Transform shootPoint;
+    public Animator rifleAnimator;
     public GameObject shootLinePrefab;
     public GameObject explosionPrefab;
     public float damage;
@@ -70,6 +71,7 @@ public class PlayerController : Player
             if (Input.GetButtonDown("Fire1"))
             {
                 PlayShootSfx();
+                rifleAnimator.CrossFadeInFixedTime("recoil", 0f);
 
                 Transform cameraTrans = cameraController.transform;
                 Vector3 endPoint = cameraTrans.position + (cameraTrans.forward * 100);

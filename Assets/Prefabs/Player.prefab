@@ -67,6 +67,7 @@ MonoBehaviour:
     m_Bits: 55
   rifleParent: {fileID: 5319464757730134491}
   shootPoint: {fileID: 4333082512025525927}
+  rifleAnimator: {fileID: 6507864070724921175}
   shootLinePrefab: {fileID: 7091948611546944853, guid: 3f72db0f62625f14985c0692735a6589, type: 3}
   explosionPrefab: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
   damage: 20
@@ -622,5 +623,10 @@ PrefabInstance:
 --- !u!4 &6507864070731909299 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 400004, guid: 2e3498d7a29c5bc40aef98b2e7f82d6b, type: 3}
+  m_PrefabInstance: {fileID: 6507864070732304951}
+  m_PrefabAsset: {fileID: 0}
+--- !u!95 &6507864070724921175 stripped
+Animator:
+  m_CorrespondingSourceObject: {fileID: 9500000, guid: 2e3498d7a29c5bc40aef98b2e7f82d6b, type: 3}
   m_PrefabInstance: {fileID: 6507864070732304951}
   m_PrefabAsset: {fileID: 0}
