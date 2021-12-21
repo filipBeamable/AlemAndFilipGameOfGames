@@ -76,6 +76,11 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 24041416635219875, guid: 9d10790834ad83a45a3e8931b74b57a9, type: 3}
   m_PrefabInstance: {fileID: 392348439451396182}
   m_PrefabAsset: {fileID: 0}
+--- !u!82 &6316664393058425785 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 5969708359693562863, guid: 9d10790834ad83a45a3e8931b74b57a9, type: 3}
+  m_PrefabInstance: {fileID: 392348439451396182}
+  m_PrefabAsset: {fileID: 0}
 --- !u!23 &370578683680126327 stripped
 MeshRenderer:
   m_CorrespondingSourceObject: {fileID: 24041417730432289, guid: 9d10790834ad83a45a3e8931b74b57a9, type: 3}
@@ -101,3 +106,8 @@ MonoBehaviour:
   startingHealth: 100
   healthPosition: {fileID: 7810251731820288835}
   meshRenderer: {fileID: 370578683680126327}
+  audioSource: {fileID: 6316664393058425785}
+  jumpSfx: {fileID: 8300000, guid: 51ab639c8d89b6d42909377acb9d5017, type: 3}
+  shootSfx: {fileID: 8300000, guid: 0f8a353e48c0a534c81cff7cb923c49a, type: 3}
+  hurtSfx: {fileID: 8300000, guid: a897e9384d25b914c807aed367e05dcc, type: 3}
+  diedSfx: {fileID: 8300000, guid: 8a46d62f96faa0142aba344d19afe774, type: 3}

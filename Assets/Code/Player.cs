@@ -8,6 +8,13 @@ public class Player : MonoBehaviour
     public Transform healthPosition;
     public MeshRenderer meshRenderer;
 
+    [Header("Sounds")]
+    public AudioSource audioSource;
+    public AudioClip jumpSfx;
+    public AudioClip shootSfx;
+    public AudioClip hurtSfx;
+    public AudioClip diedSfx;
+
     public float Health { get; private set; }
 
     protected HealthUI healthUI;
@@ -36,10 +43,12 @@ public class Player : MonoBehaviour
         {
             gameObject.SetActive(false);
             Destroy(healthUI.gameObject);
+            PlayDiedSfx();
         }
         else
         {
             healthUI.UpdateSlider(Health / startingHealth);
+            PlayHurtSfx();
         }
 
         //if (this is PlayerController playerController)
@@ -47,4 +56,10 @@ public class Player : MonoBehaviour
         //if (this is OtherPlayer otherPlayer)
         //    PlayerManager.Instance.otherPlayers.Remove(otherPlayer);
     }
+
+    protected void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
+    public void PlayJumpSfx() => PlaySound(jumpSfx);
+    public void PlayShootSfx() => PlaySound(shootSfx);
+    public void PlayHurtSfx() => PlaySound(hurtSfx);
+    public void PlayDiedSfx() => PlaySound(diedSfx);
 }

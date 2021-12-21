@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : Player
 {
+    [Space]
     public Transform root;
     public CameraController cameraController;
     public CharacterController characterController;
@@ -61,10 +62,15 @@ public class PlayerController : Player
             characterController.Move(moveVelocity.normalized * moveSpeed * Time.deltaTime);
 
             if (jumpDown && groundedPlayer)
-                    gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
+            {
+                gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
+                PlayJumpSfx();
+            }
 
             if (Input.GetButtonDown("Fire1"))
             {
+                PlayShootSfx();
+
                 Transform cameraTrans = cameraController.transform;
                 Vector3 endPoint = cameraTrans.position + (cameraTrans.forward * 100);
                 if (Physics.Raycast(new Ray(cameraTrans.position, cameraTrans.forward), out RaycastHit hitInfo))
