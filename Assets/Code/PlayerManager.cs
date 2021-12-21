@@ -18,6 +18,14 @@ public class PlayerManager : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Escape))
+        {
+            if (Cursor.lockState == CursorLockMode.Locked)
+                Cursor.lockState = CursorLockMode.None;
+            else
+                Cursor.lockState = CursorLockMode.Locked;
+        }
+
         foreach (PlayerController player in players)
         {
             if (player.cameraController.IsAnimating)
