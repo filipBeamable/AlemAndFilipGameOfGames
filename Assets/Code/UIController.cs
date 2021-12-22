@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     public GameObject healthUIPrefab;
     public Transform healthUIParent;
     public HealthUI mainCharacterHealth;
+    public GameObject pauseMenu;
     public HurtFx hurtFx;
 
     [Header("Game Over")]

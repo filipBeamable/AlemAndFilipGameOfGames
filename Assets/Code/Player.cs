@@ -1,7 +1,7 @@
 using Photon.Pun;
 using UnityEngine;
 
-public class Player : MonoBehaviourPun
+public class Player : MonoBehaviourPunCallbacks
 {
     public float startingHealth = 100f;
     public Transform healthPosition;
@@ -93,4 +93,11 @@ public class Player : MonoBehaviourPun
     public void PlayShootSfx() => shootSfx.Play();
     public void PlayHurtSfx() => hurtSfx.Play();
     public void PlayDiedSfx() => Instantiate(diedAudioPrefab).transform.position = transform.position;
+
+
+    public override void OnPlayerLeftRoom(Photon.Realtime.Player otherPlayer)
+    {
+        Debug.Log("PLAYER LEFT ROOM");
+        PlayerManager.Instance.GoToLeaderboard();
+    }
 }

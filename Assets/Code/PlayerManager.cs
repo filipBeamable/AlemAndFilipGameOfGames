@@ -12,6 +12,7 @@ public class PlayerManager : MonoBehaviour
     public static PlayerManager Instance { get; private set; }
 
     public bool IsGameOver { get; private set; }
+    public bool IsPaused { get; private set; }
 
     public GameObject playerPrefab;
     public GameObject explosionPrefab;
@@ -48,10 +49,9 @@ public class PlayerManager : MonoBehaviour
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Cursor.lockState == CursorLockMode.Locked)
-                Cursor.lockState = CursorLockMode.None;
-            else
-                Cursor.lockState = CursorLockMode.Locked;
+            IsPaused = !IsPaused;
+            Cursor.lockState = IsPaused ? CursorLockMode.None : CursorLockMode.Locked;
+            UIController.Instance.pauseMenu.SetActive(IsPaused);
         }
 
         foreach (PlayerController player in players)
@@ -66,6 +66,11 @@ public class PlayerManager : MonoBehaviour
             SetMainPlayer(1);
         if (Input.GetKeyDown(KeyCode.Alpha3))
             SetMainPlayer(2);
+    }
+
+    public void Exit()
+    {
+        GoToLeaderboard();
     }
 
     private bool SetMainPlayer(int index)

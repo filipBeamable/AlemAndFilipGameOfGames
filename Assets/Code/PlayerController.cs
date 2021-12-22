@@ -55,7 +55,7 @@ public class PlayerController : Player
         if (groundedPlayer && gravityVelocity.y < 0)
             gravityVelocity.y = 0f;
 
-        if (IsMain && !cameraController.IsAnimating)
+        if (IsMain && !PlayerManager.Instance.IsPaused && !cameraController.IsAnimating)
         {
             float horizontal = Input.GetAxis("Horizontal");
             float vertical = Input.GetAxis("Vertical");

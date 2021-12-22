@@ -11,6 +11,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public static MainMenu Instance { get; set; }
 
     public GameObject startPanel;
+    public GameObject waitingToJoinPanel;
     public GameObject roomsPanel;
     public GameObject joiningRoomPanel;
     public GameObject waitingForOtherPlayerPanel;
@@ -30,6 +31,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public void Join()
     {
         startPanel.SetActive(false);
+        waitingToJoinPanel.SetActive(true);
 
         if (!PhotonNetwork.IsConnected)
         {
@@ -39,7 +41,6 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         else
         {
             PhotonNetwork.JoinLobby();
-            roomsPanel.SetActive(true);
         }
     }
 
@@ -51,6 +52,13 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public void LoadGameScene()
     {
         SceneManager.LoadScene("Level");
+    }
+
+    public void GoBack()
+    {
+        PhotonNetwork.LeaveLobby();
+        roomsPanel.SetActive(false);
+        startPanel.SetActive(true);
     }
 
     public void LeaveRoom()
@@ -84,8 +92,13 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
         PhotonNetwork.JoinLobby();
+    }
+
+    public override void OnJoinedLobby()
+    {
+        Debug.Log("Joined lobby");
+        waitingToJoinPanel.SetActive(false);
         roomsPanel.SetActive(true);
-        //PhotonNetwork.JoinRandomRoom();
     }
 
     public override void OnRoomListUpdate(List<RoomInfo> roomList)
