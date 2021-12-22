@@ -1,6 +1,4 @@
 using Photon.Pun;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Player : MonoBehaviourPun
@@ -50,6 +48,7 @@ public class Player : MonoBehaviourPun
         PlayerManager.Instance.UpdateActivePlayerHealth();
         if (Health <= 0)
         {
+            PlayerManager.Instance.IncrementScore(1);
             gameObject.SetActive(false);
             if (healthUI != null)
                 Destroy(healthUI.gameObject);
