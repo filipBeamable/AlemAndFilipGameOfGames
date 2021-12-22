@@ -8,7 +8,7 @@ public class CustomConsoleCommandProvider
     public string Add(string[] args)
     {
         var a = int.Parse(args[0]);
-        return "Result: " + (a + b);
+        return "";
     }
 }
 
