@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
+using System;
 
 public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
@@ -21,11 +22,39 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public GameObject roomsButtonPrefab;
     public TMP_InputField roomNameInputField;
     public TextMeshProUGUI joiningRoomName;
+    public TMP_Dropdown regionDropdown;
+
+    private string regionToken;
 
     private void Awake()
     {
         Instance = this;
         PhotonNetwork.AutomaticallySyncScene = true;
+
+        regionDropdown.onValueChanged.AddListener(OnRegionChanged);
+    }
+
+    private void OnRegionChanged(int index)
+    {
+        string region = regionDropdown.options[index].text;
+        if (region == "USA East")
+            regionToken = "us";
+        if (region == "USA West")
+            regionToken = "usw";
+        if (region == "Europe")
+            regionToken = "eu";
+        if (region == "Australia")
+            regionToken = "au";
+        if (region == "Canada")
+            regionToken = "cae";
+        if (region == "Russia")
+            regionToken = "ru";
+        if (region == "South America")
+            regionToken = "sa";
+        if (region == "Turkey")
+            regionToken = "tr";
+        else
+            regionToken = "";
     }
 
     public void Join()
@@ -94,6 +123,10 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
+        if (string.IsNullOrEmpty(regionToken))
+            PhotonNetwork.ConnectToBestCloudServer();
+        else
+            PhotonNetwork.ConnectToRegion(regionToken);
         PhotonNetwork.JoinLobby();
     }
 
