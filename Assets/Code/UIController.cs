@@ -16,6 +16,7 @@ public class UIController : MonoBehaviour
     public GameObject healthUIPrefab;
     public Transform healthUIParent;
     public HealthUI mainCharacterHealth;
+    public HurtFx hurtFx;
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
