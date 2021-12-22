@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _tags: []
   permissions:
-    writeSelf: 0
+    writeSelf: 1
   partitioned:
     HasValue: 0
     Value: 0
