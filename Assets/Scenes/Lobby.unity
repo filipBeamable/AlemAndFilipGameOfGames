@@ -764,7 +764,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777235733653815979, guid: 658e52cdd751b48478d9da3300ff9c59, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 1167.3513
+      value: 1375.7731
       objectReference: {fileID: 0}
     - target: {fileID: 777235733653815979, guid: 658e52cdd751b48478d9da3300ff9c59, type: 3}
       propertyPath: m_SizeDelta.y
@@ -772,7 +772,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 777235733653815979, guid: 658e52cdd751b48478d9da3300ff9c59, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 595.67566
+      value: 699.88654
       objectReference: {fileID: 0}
     - target: {fileID: 777235733653815979, guid: 658e52cdd751b48478d9da3300ff9c59, type: 3}
       propertyPath: m_AnchoredPosition.y
@@ -2477,7 +2477,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 237076c332bf2dc468dfc22812375359, type: 3}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: 0.506
   m_Pitch: 1
   Loop: 1
   Mute: 0
