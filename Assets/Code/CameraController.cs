@@ -38,7 +38,7 @@ public class CameraController : MonoBehaviour
         if (PlayerManager.Instance.IsGameOver || PlayerManager.Instance.IsPaused)
             return;
 
-        if (player.IsMain)
+        if (player.IsMain && !PlayerManager.Instance.ShouldSwitchCharacter)
         {
             if (!IsAnimating)
             {
@@ -60,7 +60,9 @@ public class CameraController : MonoBehaviour
                 transform.rotation = Quaternion.Lerp(startRotation, targetRotation, time / animTime);
 
                 if (time >= animTime)
+                {
                     IsAnimating = false;
+                }
             }
         }
     }

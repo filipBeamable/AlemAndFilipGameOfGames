@@ -28,6 +28,10 @@ public class UIController : MonoBehaviour
     public List<CharacterUI> myCharacters;
     public List<CharacterUI> enemyCharacters;
 
+    [Space]
+    public TextMeshProUGUI timer;
+    public GameObject switchCharacterInfo;
+
     [Header("Game Over")]
     public GameObject gameOverPanel;
     public TextMeshProUGUI gameOverText;

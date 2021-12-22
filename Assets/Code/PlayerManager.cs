@@ -2,6 +2,7 @@ using Beamable;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -14,11 +15,13 @@ public class PlayerManager : MonoBehaviour
 
     public bool IsGameOver { get; private set; }
     public bool IsPaused { get; private set; }
+    public bool ShouldSwitchCharacter { get; private set; }
 
     public GameObject playerPrefab;
     public GameObject explosionPrefab;
     public float rifleDamage;
     public float mouseSensitivity = 200f;
+    public float maxTimeBeforeSwitch = 7f;
     public List<Transform> masterPlayerPositions;
     public List<Transform> otherPlayerPositions;
 
@@ -28,6 +31,8 @@ public class PlayerManager : MonoBehaviour
 
     [HideInInspector] public int currentActiveIndex = -1;
     public PlayerController CurrentActivePlayer => players[currentActiveIndex];
+
+    private float timer;
 
     private void Awake()
     {
@@ -50,6 +55,8 @@ public class PlayerManager : MonoBehaviour
 
         UIController.Instance.mouseSensitivitySlider.value = MouseSensitivity;
         UIController.Instance.mouseSensitivitySlider.onValueChanged.AddListener(MouseSensitivityChanged);
+
+        ResetTimer();
     }
 
     private void Update()
@@ -67,12 +74,36 @@ public class PlayerManager : MonoBehaviour
                 return;
         }
 
+        if (!IsPaused && !ShouldSwitchCharacter && players.Count(p => p.gameObject.activeSelf) > 1)
+        {
+            timer += Time.deltaTime;
+            if (timer >= maxTimeBeforeSwitch)
+            {
+                ShouldSwitchCharacter = true;
+                UIController.Instance.switchCharacterInfo.SetActive(true);
+                UIController.Instance.timer.text = "0";
+            }
+            else
+            {
+                int time = (int)((maxTimeBeforeSwitch - timer) + 0.9999f);
+                UIController.Instance.timer.text = time.ToString();
+            }
+        }
+
         if (Input.GetKeyDown(KeyCode.Alpha1))
             SetMainPlayer(0);
         if (Input.GetKeyDown(KeyCode.Alpha2))
             SetMainPlayer(1);
         if (Input.GetKeyDown(KeyCode.Alpha3))
             SetMainPlayer(2);
+    }
+
+    public void ResetTimer()
+    {
+        timer = 0f;
+        ShouldSwitchCharacter = false;
+        UIController.Instance.timer.text = ((int)(maxTimeBeforeSwitch + 0.5f)).ToString();
+        UIController.Instance.switchCharacterInfo.SetActive(false);
     }
 
     public void Exit()
@@ -92,6 +123,7 @@ public class PlayerManager : MonoBehaviour
         CurrentActivePlayer.cameraController.LerpFromOldPlayer(oldPlayer);
 
         UpdateActivePlayerHealth();
+        ResetTimer();
         return true;
     }
 

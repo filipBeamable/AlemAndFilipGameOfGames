@@ -123,10 +123,6 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
-        if (string.IsNullOrEmpty(regionToken))
-            PhotonNetwork.ConnectToBestCloudServer();
-        else
-            PhotonNetwork.ConnectToRegion(regionToken);
         PhotonNetwork.JoinLobby();
     }
 
