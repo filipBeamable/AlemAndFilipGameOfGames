@@ -28,12 +28,12 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        _beamableApi = API.Instance.GetResult();
         Instance = this;
     }
 
-    private void Start()
+    private async void Start()
     {
+        _beamableApi = await API.Instance;
         List<Transform> spawnPoints = PhotonNetwork.IsMasterClient ? masterPlayerPositions : otherPlayerPositions;
 
         foreach (Transform spawnPoint in spawnPoints)
