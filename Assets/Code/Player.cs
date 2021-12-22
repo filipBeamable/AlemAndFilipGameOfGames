@@ -77,6 +77,9 @@ public class Player : MonoBehaviourPun
             if (healthUI != null)
                 healthUI.UpdateSlider(Health / startingHealth);
             PlayHurtSfx();
+
+            if (photonView.IsMine && PlayerManager.Instance.CurrentActivePlayer == this)
+                UIController.Instance.hurtFx.Show();
         }
 
         //if (this is PlayerController playerController)
