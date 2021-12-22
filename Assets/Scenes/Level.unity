@@ -26081,6 +26081,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
       value: PlayerManager, Assembly-CSharp
       objectReference: {fileID: 0}
+    - target: {fileID: 1736230667037345309, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 276.68
+      objectReference: {fileID: 0}
     - target: {fileID: 1736230667077262920, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
       propertyPath: m_text
       value: GO TO LEAERBOARD
@@ -26199,6 +26203,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8240050006677734815, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
       propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8818671357166024253, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

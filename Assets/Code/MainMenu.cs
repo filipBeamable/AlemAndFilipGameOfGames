@@ -38,6 +38,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         }
         else
         {
+            PhotonNetwork.JoinLobby();
             roomsPanel.SetActive(true);
         }
     }
