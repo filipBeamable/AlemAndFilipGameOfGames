@@ -53,6 +53,13 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         SceneManager.LoadScene("Level");
     }
 
+    public void LeaveRoom()
+    {
+        PhotonNetwork.LeaveRoom();
+        roomsPanel.SetActive(true);
+        waitingForOtherPlayerPanel.SetActive(false);
+    }
+
     public void OnCreateRoomClicked()
     {
         PhotonNetwork.CreateRoom(roomNameInputField.text, new RoomOptions() { MaxPlayers = 2 });
