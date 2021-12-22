@@ -55,6 +55,7 @@ public class Player : MonoBehaviourPun
         Health = healthValue;
         if (healthUI != null)
             healthUI.UpdateSlider(Health / startingHealth);
+        PlayerManager.Instance.UpdateActivePlayerHealth();
     }
 
     public void OnHit(float damage)

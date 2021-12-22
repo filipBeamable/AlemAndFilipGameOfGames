@@ -636,7 +636,7 @@ MonoBehaviour:
   healthUIPrefab: {fileID: 7204784835766888842, guid: 990ba70abbfd8854f8c2a43c14e11152, type: 3}
   healthUIParent: {fileID: 3856160760914289969}
   mainCharacterHealth: {fileID: 6135665553587504431}
-  hurtFx: {fileID: 0}
+  hurtFx: {fileID: 6889028143861210075}
   gameOverPanel: {fileID: 8818671357166024253}
   gameOverText: {fileID: 1736230667644544221}
 --- !u!82 &2655075418808532469
