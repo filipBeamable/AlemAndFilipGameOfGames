@@ -97,7 +97,6 @@ public class UIController : MonoBehaviour
 
     public void GameOver(string text)
     {
-        Time.timeScale = 0f;
         Cursor.lockState = CursorLockMode.None;
         gameOverPanel.SetActive(true);
         gameOverText.text = text;
