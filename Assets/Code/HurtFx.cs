@@ -26,7 +26,7 @@ public class HurtFx : MonoBehaviour
     {
         animating = true;
         Alpha = 1f;
-        image.gameObject.SetActive(true);
+        image.enabled = true;
         time = 0f;
     }
 
@@ -42,7 +42,7 @@ public class HurtFx : MonoBehaviour
         if (timeVal >= 1f)
         {
             animating = false;
-            image.gameObject.SetActive(false);
+            image.enabled = false;
         }
     }
 }
