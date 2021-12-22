@@ -4,7 +4,7 @@ using UnityEngine;
 [BeamableConsoleCommandProvider]
 public class CustomConsoleCommandProvider
 {
-    [BeamableConsoleCommand("add health", "adds health", "add health <int>")]
+    [BeamableConsoleCommand("health", "adds health", "health <number>")]
     public string Add(string[] args)
     {
         var a = int.Parse(args[0]);
