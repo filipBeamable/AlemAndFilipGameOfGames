@@ -351,7 +351,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   rectTransform: {fileID: 6801197954976338128}
   slider: {fileID: 6718899471390768887}
-  index: {fileID: 0}
+  index: {fileID: 5723477243324556846}
 --- !u!1 &8567620073417588774
 GameObject:
   m_ObjectHideFlags: 0
