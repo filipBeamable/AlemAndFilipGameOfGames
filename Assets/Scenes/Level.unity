@@ -16498,6 +16498,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 24041416635219875, guid: 9d10790834ad83a45a3e8931b74b57a9, type: 3}
+  explosionPrefab: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
   masterPlayerPositions:
   - {fileID: 783235697}
   - {fileID: 852532350}

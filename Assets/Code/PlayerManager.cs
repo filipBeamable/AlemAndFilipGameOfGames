@@ -10,6 +10,8 @@ public class PlayerManager : MonoBehaviour
     public bool IsGameOver { get; private set; }
 
     public GameObject playerPrefab;
+    public GameObject explosionPrefab;
+    public float rifleDamage;
     public List<Transform> masterPlayerPositions;
     public List<Transform> otherPlayerPositions;
 
@@ -61,10 +63,10 @@ public class PlayerManager : MonoBehaviour
             SetMainPlayer(2);
     }
 
-    private void SetMainPlayer(int index)
+    private bool SetMainPlayer(int index)
     {
-        if (currentActiveIndex == index)
-            return;
+        if (currentActiveIndex == index || !players[index].gameObject.activeSelf)
+            return false;
 
         PlayerController oldPlayer = CurrentActivePlayer;
         currentActiveIndex = index;
@@ -73,6 +75,7 @@ public class PlayerManager : MonoBehaviour
         CurrentActivePlayer.cameraController.LerpFromOldPlayer(oldPlayer);
 
         UpdateActivePlayerHealth();
+        return true;
     }
 
     public void UpdateActivePlayerHealth()
@@ -80,7 +83,7 @@ public class PlayerManager : MonoBehaviour
         UIController.Instance.mainCharacterHealth.UpdateSlider(CurrentActivePlayer.Health / CurrentActivePlayer.startingHealth);
     }
 
-    public void OnPlayerDied()
+    public void OnPlayerDied(Player deadPlayer)
     {
         bool allDead = true;
         foreach (Player player in players)
@@ -96,6 +99,17 @@ public class PlayerManager : MonoBehaviour
         {
             OtherPlayerWon();
             return;
+        }
+        else
+        {
+            if (deadPlayer == CurrentActivePlayer)
+            {
+                for (int i = 0; i < 3; i++)
+                {
+                    if (SetMainPlayer(i))
+                        break;
+                }
+            }
         }
 
         allDead = true;

@@ -19,8 +19,6 @@ public class PlayerController : Player
     public Transform shootPoint;
     public Animator rifleAnimator;
     public GameObject shootLinePrefab;
-    public GameObject explosionPrefab;
-    public float damage;
 
     private Vector3 gravityVelocity;
 
@@ -87,19 +85,21 @@ public class PlayerController : Player
             if (Input.GetButtonDown("Fire1"))
             {
                 PlayShootSfx();
-                rifleAnimator.CrossFadeInFixedTime("recoil", 0f);
+                photonView.RPC("AnimRifle", RpcTarget.All);
 
                 Transform cameraTrans = cameraController.transform;
                 Vector3 endPoint = cameraTrans.position + (cameraTrans.forward * 100);
                 if (Physics.Raycast(new Ray(cameraTrans.position, cameraTrans.forward), out RaycastHit hitInfo))
                 {
                     endPoint = hitInfo.point;
+                    int playerID = -1;
 
                     Player player = hitInfo.collider.GetComponent<Player>();
                     if (player != null && !player.photonView.IsMine)
-                        player.OnHit(damage);
+                        playerID = player.photonView.ViewID;
 
-                    Instantiate(explosionPrefab).transform.position = endPoint;
+                    photonView.RPC("SpawnShotEffect", RpcTarget.All, endPoint, playerID);
+                    //SpawnShotEffect(endPoint);
                 }
 
                 //Instantiate(shootLinePrefab).GetComponent<ShootLine>().Init(shootPoint.position, endPoint);
@@ -117,5 +117,36 @@ public class PlayerController : Player
 
         if (healthUI != null)
             healthUI.gameObject.SetActive(!isMain);
+    }
+
+    [PunRPC]
+    public void AnimRifle()
+    {
+        rifleAnimator.CrossFadeInFixedTime("recoil", 0f);
+    }
+    [PunRPC]
+    public void SpawnShotEffect(Vector3 pos, int playerID)
+    {
+        Instantiate(PlayerManager.Instance.explosionPrefab).transform.position = pos;
+
+        if (playerID != -1)
+        {
+            foreach (Player player in PlayerManager.Instance.players)
+            {
+                if (player.photonView.ViewID == playerID)
+                {
+                    player.OnHit(PlayerManager.Instance.rifleDamage);
+                    return;
+                }
+            }
+            foreach (Player player in PlayerManager.Instance.otherPlayers)
+            {
+                if (player.photonView.ViewID == playerID)
+                {
+                    player.OnHit(PlayerManager.Instance.rifleDamage);
+                    return;
+                }
+            }
+        }
     }
 }
