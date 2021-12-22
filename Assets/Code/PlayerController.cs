@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -25,12 +26,24 @@ public class PlayerController : Player
 
     public bool IsMain { get; set; }
 
+    private void Start()
+    {
+        if (!photonView.IsMine)
+        {
+            cameraController.gameObject.SetActive(false);
+            PlayerManager.Instance.otherPlayers.Add(this);
+        }
+    }
+
     protected override void Update()
     {
         if (PlayerManager.Instance.IsGameOver)
             return;
 
         base.Update();
+
+        if (photonView.IsMine == false && PhotonNetwork.IsConnected == true)
+            return;
 
         bool groundedPlayer = characterController.isGrounded;
         if (!groundedPlayer)

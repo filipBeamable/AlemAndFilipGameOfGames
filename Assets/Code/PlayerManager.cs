@@ -1,3 +1,4 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -8,8 +9,12 @@ public class PlayerManager : MonoBehaviour
 
     public bool IsGameOver { get; private set; }
 
+    public GameObject playerPrefab;
+    public List<Transform> masterPlayerPositions;
+    public List<Transform> otherPlayerPositions;
+
     public List<PlayerController> players;
-    public List<OtherPlayer> otherPlayers;
+    public List<PlayerController> otherPlayers;
     public AudioSource audioSource;
 
     [HideInInspector] public int currentActiveIndex = -1;
@@ -22,6 +27,11 @@ public class PlayerManager : MonoBehaviour
 
     private void Start()
     {
+        List<Transform> spawnPoints = PhotonNetwork.IsMasterClient ? masterPlayerPositions : otherPlayerPositions;
+
+        foreach (Transform spawnPoint in spawnPoints)
+            players.Add(PhotonNetwork.Instantiate(playerPrefab.name, spawnPoint.position, spawnPoint.rotation).GetComponent<PlayerController>());
+
         currentActiveIndex = 0;
         for (int i = 0; i < players.Count; i++)
             players[i].SetIsMain(i == 0);

@@ -1,12 +1,15 @@
+using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Player : MonoBehaviour
+public class Player : MonoBehaviourPun
 {
     public float startingHealth = 100f;
     public Transform healthPosition;
     public MeshRenderer meshRenderer;
+    public Material localPlayerMat;
+    public Material otherPlayerMat;
 
     [Header("Sounds")]
     public AudioSource audioSource;
@@ -19,11 +22,13 @@ public class Player : MonoBehaviour
 
     protected HealthUI healthUI;
 
-    private void Awake()
+    protected virtual void Awake()
     {
         Health = startingHealth;
         healthUI = UIController.Instance.InstantiateHealthUI();
         healthUI.UpdateSlider(1f);
+
+        meshRenderer.material = photonView.IsMine ? localPlayerMat : otherPlayerMat;
     }
 
     protected virtual void Update()

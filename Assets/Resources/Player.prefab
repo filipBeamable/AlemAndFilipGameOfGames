@@ -13,6 +13,8 @@ GameObject:
   - component: {fileID: 24041416635219870}
   - component: {fileID: 3164622379046067428}
   - component: {fileID: 5969708359693562863}
+  - component: {fileID: 2947072126684137035}
+  - component: {fileID: 4687263529260660217}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -51,6 +53,8 @@ MonoBehaviour:
   startingHealth: 100
   healthPosition: {fileID: 7571237353946805013}
   meshRenderer: {fileID: 24041417730432289}
+  localPlayerMat: {fileID: 2100000, guid: c11aab82ece53414284b54c613690e04, type: 2}
+  otherPlayerMat: {fileID: 2100000, guid: 4cc2a96b366951642b64a77fba7a8f38, type: 2}
   audioSource: {fileID: 5969708359693562863}
   jumpSfx: {fileID: 8300000, guid: 51ab639c8d89b6d42909377acb9d5017, type: 3}
   shootSfx: {fileID: 8300000, guid: 0f8a353e48c0a534c81cff7cb923c49a, type: 3}
@@ -199,6 +203,45 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &2947072126684137035
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24041416635219875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
+--- !u!114 &4687263529260660217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 24041416635219875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: aa584fbee541324448dd18d8409c7a41, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  ObservedComponentsFoldoutOpen: 1
+  Group: 0
+  prefixField: -1
+  Synchronization: 3
+  OwnershipTransfer: 0
+  observableSearch: 2
+  ObservedComponents:
+  - {fileID: 2947072126684137035}
+  sceneViewId: 0
+  InstantiationId: 0
+  isRuntimeInstantiated: 0
 --- !u!1 &24041417049294652
 GameObject:
   m_ObjectHideFlags: 0
@@ -361,7 +404,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: cc65b6309dfc25d438db4cbe190205ef, type: 2}
+  - {fileID: 2100000, guid: c11aab82ece53414284b54c613690e04, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
