@@ -1,8 +1,10 @@
 using Beamable;
 using System;
 using System.Collections;
+using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
@@ -16,8 +18,14 @@ public class UIController : MonoBehaviour
     public GameObject healthUIPrefab;
     public Transform healthUIParent;
     public HealthUI mainCharacterHealth;
+    public Animator crossHairAnim;
+    public AudioSource hitSource;
     public GameObject pauseMenu;
     public HurtFx hurtFx;
+
+    [Space]
+    public List<CharacterUI> myCharacters;
+    public List<CharacterUI> enemyCharacters;
 
     [Header("Game Over")]
     public GameObject gameOverPanel;
@@ -90,6 +98,12 @@ public class UIController : MonoBehaviour
     //    }
     //}
 
+    public void ShowHitEffect()
+    {
+        crossHairAnim.CrossFadeInFixedTime("hit", 0f);
+        hitSource.Play();
+    }
+
     public HealthUI InstantiateHealthUI()
     {
         return Instantiate(healthUIPrefab, healthUIParent).GetComponent<HealthUI>();
@@ -100,5 +114,19 @@ public class UIController : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         gameOverPanel.SetActive(true);
         gameOverText.text = text;
+    }
+}
+
+
+[Serializable]
+public class CharacterUI
+{
+    public Image image;
+    public Animator animator;
+
+    public void PlayAnimAndChangeColor()
+    {
+        image.color = new Color(0.4f, 0.4f, 0.4f);
+        animator.CrossFadeInFixedTime("died", 0f);
     }
 }

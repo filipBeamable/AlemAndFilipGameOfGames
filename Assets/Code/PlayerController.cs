@@ -97,7 +97,10 @@ public class PlayerController : Player
 
                     Player player = hitInfo.collider.GetComponent<Player>();
                     if (player != null && !player.photonView.IsMine)
+                    {
                         playerID = player.photonView.ViewID;
+                        UIController.Instance.ShowHitEffect();
+                    }
 
                     photonView.RPC("SpawnShotEffect", RpcTarget.All, endPoint, playerID);
                     //SpawnShotEffect(endPoint);

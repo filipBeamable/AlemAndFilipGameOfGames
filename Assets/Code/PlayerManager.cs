@@ -95,6 +95,10 @@ public class PlayerManager : MonoBehaviour
 
     public void OnPlayerDied(Player deadPlayer)
     {
+        List<PlayerController> playersList = deadPlayer.photonView.IsMine ? players : otherPlayers;
+        List<CharacterUI> characterUIs = deadPlayer.photonView.IsMine ? UIController.Instance.myCharacters : UIController.Instance.enemyCharacters;
+        characterUIs[playersList.IndexOf(deadPlayer as PlayerController)].PlayAnimAndChangeColor();
+
         bool allDead = true;
         foreach (Player player in players)
         {
@@ -152,6 +156,7 @@ public class PlayerManager : MonoBehaviour
 
     public void GoToLeaderboard()
     {
+        Cursor.lockState = CursorLockMode.None;
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene("Score2");
     }
