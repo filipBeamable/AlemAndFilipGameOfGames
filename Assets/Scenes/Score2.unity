@@ -323,6 +323,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 554290676, guid: 1b85b3a11dfa349b0933bc289d82af9f, type: 3}
+      propertyPath: Leaderboard.Id
+      value: leaderboards.lc
+      objectReference: {fileID: 0}
     - target: {fileID: 1228773914, guid: 1b85b3a11dfa349b0933bc289d82af9f, type: 3}
       propertyPath: m_SizeDelta.y
       value: 0
