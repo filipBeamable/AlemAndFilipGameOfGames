@@ -23,13 +23,17 @@ public class Player : MonoBehaviourPun
     protected virtual void Awake()
     {
         Health = startingHealth;
+        meshRenderer.material = photonView.IsMine ? localPlayerMat : otherPlayerMat;
+    }
+
+    protected virtual void Start()
+    {
         if (photonView.IsMine)
         {
             healthUI = UIController.Instance.InstantiateHealthUI();
+            healthUI.index.text = (PlayerManager.Instance.players.IndexOf(this as PlayerController) + 1).ToString();
             healthUI.UpdateSlider(1f);
         }
-
-        meshRenderer.material = photonView.IsMine ? localPlayerMat : otherPlayerMat;
     }
 
     protected virtual void Update()

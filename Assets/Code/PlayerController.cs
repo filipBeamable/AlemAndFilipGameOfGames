@@ -24,8 +24,10 @@ public class PlayerController : Player
 
     public bool IsMain { get; set; }
 
-    private void Start()
+    protected override void Start()
     {
+        base.Start();
+
         if (!photonView.IsMine)
         {
             cameraController.gameObject.SetActive(false);
