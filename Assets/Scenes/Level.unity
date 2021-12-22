@@ -14091,7 +14091,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1879866760483718077, guid: 28d63d278d26a754eaec42724a1334d7, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -553.58673
+      value: -0.00013511295
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 28d63d278d26a754eaec42724a1334d7, type: 3}
@@ -16560,6 +16560,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   playerPrefab: {fileID: 24041416635219875, guid: 9d10790834ad83a45a3e8931b74b57a9, type: 3}
   explosionPrefab: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
+  rifleDamage: 20
   masterPlayerPositions:
   - {fileID: 783235697}
   - {fileID: 852532350}
