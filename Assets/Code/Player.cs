@@ -45,6 +45,18 @@ public class Player : MonoBehaviourPun
         }
     }
 
+    [PunRPC]
+    public void SetHealthSynced(float healthValue)
+    {
+        photonView.RPC("SetHealth", RpcTarget.All, healthValue);
+    }
+    public void SetHealth(float healthValue)
+    {
+        Health = healthValue;
+        if (healthUI != null)
+            healthUI.UpdateSlider(Health / startingHealth);
+    }
+
     public void OnHit(float damage)
     {
         Health -= damage;

@@ -8,7 +8,8 @@ public class CustomConsoleCommandProvider
     public string Add(string[] args)
     {
         var a = int.Parse(args[0]);
-        PlayerManager.Instance.CurrentActivePlayer.Health += a;
+        PlayerController currentActivePlayer = PlayerManager.Instance.CurrentActivePlayer;
+        currentActivePlayer.SetHealthSynced(currentActivePlayer.Health + a);
         return a.ToString();
     }
 }
