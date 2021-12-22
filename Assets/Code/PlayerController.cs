@@ -120,6 +120,8 @@ public class PlayerController : Player
             healthUI.gameObject.SetActive(!isMain);
     }
 
+    [PunRPC] public void PlayJumpSfx() => jumpSfx.Play();
+
     [PunRPC]
     public void AnimRifle()
     {

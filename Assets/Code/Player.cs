@@ -74,7 +74,6 @@ public class Player : MonoBehaviourPun
     }
 
 
-    [PunRPC] public void PlayJumpSfx() => jumpSfx.Play();
     public void PlayShootSfx() => shootSfx.Play();
     public void PlayHurtSfx() => hurtSfx.Play();
     public void PlayDiedSfx() => Instantiate(diedAudioPrefab).transform.position = transform.position;
