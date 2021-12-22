@@ -153,6 +153,6 @@ public class PlayerManager : MonoBehaviour
 
     public void IncrementScore(int score)
     {
-        _beamableApi.LeaderboardService.IncrementScore("leaderboards.ls", score);
+        _beamableApi.LeaderboardService.IncrementScore("leaderboards.lc", score);
     }
 }
