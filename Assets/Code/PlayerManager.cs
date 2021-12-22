@@ -1,3 +1,4 @@
+using Beamable;
 using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
@@ -6,6 +7,8 @@ using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
+    private IBeamableAPI _beamableApi;
+
     public static PlayerManager Instance { get; private set; }
 
     public bool IsGameOver { get; private set; }
@@ -25,6 +28,7 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
+        _beamableApi = API.Instance.GetResult();
         Instance = this;
     }
 
@@ -145,5 +149,10 @@ public class PlayerManager : MonoBehaviour
     {
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene("Score2");
+    }
+
+    public void IncrementScore(int score)
+    {
+        _beamableApi.LeaderboardService.IncrementScore("leaderboards.ls", score);
     }
 }
