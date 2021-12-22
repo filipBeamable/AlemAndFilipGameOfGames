@@ -73,8 +73,6 @@ MonoBehaviour:
   shootPoint: {fileID: 4333082512025525927}
   rifleAnimator: {fileID: 6507864070724921175}
   shootLinePrefab: {fileID: 7091948611546944853, guid: 3f72db0f62625f14985c0692735a6589, type: 3}
-  explosionPrefab: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
-  damage: 20
 --- !u!143 &24041416635219870
 CharacterController:
   m_ObjectHideFlags: 0
@@ -239,6 +237,7 @@ MonoBehaviour:
   observableSearch: 2
   ObservedComponents:
   - {fileID: 2947072126684137035}
+  - {fileID: 1608962822062086234}
   sceneViewId: 0
   InstantiationId: 0
   isRuntimeInstantiated: 0
@@ -576,6 +575,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5319464757730134491}
+  - component: {fileID: 1608962822062086234}
   m_Layer: 6
   m_Name: RifleParent
   m_TagString: Untagged
@@ -598,6 +598,22 @@ Transform:
   m_Father: {fileID: 24041417730432295}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1608962822062086234
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6461551541731592635}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 627855c7f81362d41938ffe0b1475957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SynchronizePosition: 1
+  m_SynchronizeRotation: 1
+  m_SynchronizeScale: 0
+  m_UseLocal: 1
 --- !u!1001 &6507864070732304951
 PrefabInstance:
   m_ObjectHideFlags: 0

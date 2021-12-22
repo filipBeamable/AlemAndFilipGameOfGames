@@ -54,7 +54,7 @@ public class Player : MonoBehaviourPun
             if (healthUI != null)
                 Destroy(healthUI.gameObject);
             PlayDiedSfx();
-            PlayerManager.Instance.OnPlayerDied();
+            PlayerManager.Instance.OnPlayerDied(this);
         }
         else
         {
@@ -68,6 +68,7 @@ public class Player : MonoBehaviourPun
         //if (this is OtherPlayer otherPlayer)
         //    PlayerManager.Instance.otherPlayers.Remove(otherPlayer);
     }
+
 
     protected void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
     public void PlayJumpSfx() => PlaySound(jumpSfx);
