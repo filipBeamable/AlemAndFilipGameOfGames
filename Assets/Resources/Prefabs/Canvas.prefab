@@ -1194,7 +1194,7 @@ MonoBehaviour:
   hitSource: {fileID: 8124096116137219185}
   pauseMenu: {fileID: 4964887961081252821}
   hurtFx: {fileID: 6889028143861210075}
-  mouseSensitivitySlider: {fileID: 0}
+  mouseSensitivitySlider: {fileID: 3749747043871609741}
   myCharacters:
   - image: {fileID: 878317948884014888}
     animator: {fileID: 9134194121219523886}
