@@ -96,7 +96,7 @@ public class PlayerController : Player
                     endPoint = hitInfo.point;
 
                     Player player = hitInfo.collider.GetComponent<Player>();
-                    if (player != null && !(player is PlayerController))
+                    if (player != null && !player.photonView.IsMine)
                         player.OnHit(damage);
 
                     Instantiate(explosionPrefab).transform.position = endPoint;

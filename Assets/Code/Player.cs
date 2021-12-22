@@ -20,13 +20,16 @@ public class Player : MonoBehaviourPun
 
     public float Health { get; private set; }
 
-    protected HealthUI healthUI;
+    protected HealthUI healthUI = null;
 
     protected virtual void Awake()
     {
         Health = startingHealth;
-        healthUI = UIController.Instance.InstantiateHealthUI();
-        healthUI.UpdateSlider(1f);
+        if (photonView.IsMine)
+        {
+            healthUI = UIController.Instance.InstantiateHealthUI();
+            healthUI.UpdateSlider(1f);
+        }
 
         meshRenderer.material = photonView.IsMine ? localPlayerMat : otherPlayerMat;
     }
@@ -48,13 +51,15 @@ public class Player : MonoBehaviourPun
         if (Health <= 0)
         {
             gameObject.SetActive(false);
-            Destroy(healthUI.gameObject);
+            if (healthUI != null)
+                Destroy(healthUI.gameObject);
             PlayDiedSfx();
             PlayerManager.Instance.OnPlayerDied();
         }
         else
         {
-            healthUI.UpdateSlider(Health / startingHealth);
+            if (healthUI != null)
+                healthUI.UpdateSlider(Health / startingHealth);
             PlayHurtSfx();
         }
 
