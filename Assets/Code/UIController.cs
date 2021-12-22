@@ -22,6 +22,7 @@ public class UIController : MonoBehaviour
     public AudioSource hitSource;
     public GameObject pauseMenu;
     public HurtFx hurtFx;
+    public Slider mouseSensitivitySlider;
 
     [Space]
     public List<CharacterUI> myCharacters;

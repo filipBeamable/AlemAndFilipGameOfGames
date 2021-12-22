@@ -70,6 +70,9 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     public void OnCreateRoomClicked()
     {
+        if (string.IsNullOrEmpty(roomNameInputField.text) || string.IsNullOrWhiteSpace(roomNameInputField.text))
+            return;
+
         PhotonNetwork.CreateRoom(roomNameInputField.text, new RoomOptions() { MaxPlayers = 2 });
         GoToJoiningRoom(roomNameInputField.text);
         roomNameInputField.text = "";

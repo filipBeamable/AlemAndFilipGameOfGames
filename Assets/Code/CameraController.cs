@@ -6,7 +6,6 @@ public class CameraController : MonoBehaviour
 {
     public PlayerController player;
     public CameraController myCamera;
-    public float mouseSensitivity = 100f;
     public float animTime;
 
     private float xRotation = 0f;
@@ -18,6 +17,16 @@ public class CameraController : MonoBehaviour
     private Quaternion startRotation;
     private Vector3 targetPosition;
     private Quaternion targetRotation;
+
+    private float MouseSensitivity
+    {
+        get
+        {
+            if (PlayerManager.Instance != null)
+                return PlayerManager.Instance.mouseSensitivity;
+            return 250f;
+        }
+    }
 
     private void Start()
     {
@@ -33,8 +42,8 @@ public class CameraController : MonoBehaviour
         {
             if (!IsAnimating)
             {
-                float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
-                float mouseY = Input.GetAxis("Mouse Y") * mouseSensitivity * Time.deltaTime;
+                float mouseX = Input.GetAxis("Mouse X") * MouseSensitivity * Time.deltaTime;
+                float mouseY = Input.GetAxis("Mouse Y") * MouseSensitivity * Time.deltaTime;
 
                 xRotation -= mouseY;
                 xRotation = Mathf.Clamp(xRotation, -90f, 90f);

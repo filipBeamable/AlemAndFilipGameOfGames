@@ -17,6 +17,7 @@ public class PlayerManager : MonoBehaviour
     public GameObject playerPrefab;
     public GameObject explosionPrefab;
     public float rifleDamage;
+    public float mouseSensitivity = 200f;
     public List<Transform> masterPlayerPositions;
     public List<Transform> otherPlayerPositions;
 
@@ -43,6 +44,8 @@ public class PlayerManager : MonoBehaviour
         currentActiveIndex = 0;
         for (int i = 0; i < players.Count; i++)
             players[i].SetIsMain(i == 0);
+
+        UIController.Instance.mouseSensitivitySlider.onValueChanged.AddListener(MouseSensitivityChanged);
     }
 
     private void Update()
@@ -159,6 +162,11 @@ public class PlayerManager : MonoBehaviour
         Cursor.lockState = CursorLockMode.None;
         PhotonNetwork.LeaveRoom();
         SceneManager.LoadScene("Score2");
+    }
+
+    public void MouseSensitivityChanged(float newValue)
+    {
+        mouseSensitivity = newValue;
     }
 
     public void IncrementScore(int score)

@@ -16565,6 +16565,7 @@ MonoBehaviour:
   playerPrefab: {fileID: 24041416635219875, guid: 9d10790834ad83a45a3e8931b74b57a9, type: 3}
   explosionPrefab: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
   rifleDamage: 10
+  mouseSensitivity: 200
   masterPlayerPositions:
   - {fileID: 783235697}
   - {fileID: 852532350}
@@ -26168,6 +26169,14 @@ PrefabInstance:
     - target: {fileID: 3505726767555772124, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
       propertyPath: m_Name
       value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899860004162391578, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4899860004162391578, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
