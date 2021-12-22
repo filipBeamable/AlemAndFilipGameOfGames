@@ -45,11 +45,11 @@ public class Player : MonoBehaviourPun
         }
     }
 
-    [PunRPC]
     public void SetHealthSynced(float healthValue)
     {
         photonView.RPC("SetHealth", RpcTarget.All, healthValue);
     }
+    [PunRPC]
     public void SetHealth(float healthValue)
     {
         Health = healthValue;
