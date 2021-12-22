@@ -81,7 +81,7 @@ public class PlayerController : Player
             if (jumpDown && groundedPlayer)
             {
                 gravityVelocity.y += Mathf.Sqrt(jumpHeight * 3.0f * gravity);
-                PlayJumpSfx();
+                photonView.RPC("PlayJumpSfx", RpcTarget.All);
             }
 
             if (Input.GetButtonDown("Fire1"))
