@@ -26,7 +26,7 @@ MonoBehaviour:
     Enabled: 1
     TemplateId: small
     CustomDockerFileStrings: 
-    IncludeDebugTools: 1
+    IncludeDebugTools: 0
     DebugData:
       Username: root
       Password: Password!

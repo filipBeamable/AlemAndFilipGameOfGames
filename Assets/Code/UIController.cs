@@ -40,8 +40,6 @@ public class UIController : MonoBehaviour
         var player2Id = Guid.NewGuid();
         //StartCoroutine(StartLongPoling());
 
-        var myPlayers = new PlayerInfo[3];
-
         //playerInfo[0] = new PlayerInfo
         //{
             
