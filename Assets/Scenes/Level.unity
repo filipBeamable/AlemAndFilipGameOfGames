@@ -26069,6 +26069,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1736230667037345308, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 1448604663}
+    - target: {fileID: 1736230667037345308, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: GoToLeaderboard
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736230667037345308, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
+      value: PlayerManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 1736230667077262920, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
+      propertyPath: m_text
+      value: GO TO LEAERBOARD
+      objectReference: {fileID: 0}
     - target: {fileID: 3505726767555772096, guid: 6d9418bb4a9591841ba14625ab818b7c, type: 3}
       propertyPath: m_Pivot.x
       value: 0

@@ -26,6 +26,9 @@ public class CameraController : MonoBehaviour
 
     private void Update()
     {
+        if (PlayerManager.Instance.IsGameOver)
+            return;
+
         if (player.IsMain)
         {
             if (!IsAnimating)

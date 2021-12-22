@@ -2,6 +2,7 @@ using Photon.Pun;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
@@ -138,5 +139,11 @@ public class PlayerManager : MonoBehaviour
     {
         UIController.Instance.GameOver("YOU LOST :(");
         IsGameOver = true;
+    }
+
+    public void GoToLeaderboard()
+    {
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("Score2");
     }
 }
