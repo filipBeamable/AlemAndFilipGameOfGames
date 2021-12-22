@@ -86,7 +86,6 @@ public class PlayerController : Player
 
             if (Input.GetButtonDown("Fire1"))
             {
-                PlayShootSfx();
                 photonView.RPC("AnimRifle", RpcTarget.All);
 
                 Transform cameraTrans = cameraController.transform;
@@ -124,6 +123,7 @@ public class PlayerController : Player
     [PunRPC]
     public void AnimRifle()
     {
+        PlayShootSfx();
         rifleAnimator.CrossFadeInFixedTime("recoil", 0f);
     }
     [PunRPC]
