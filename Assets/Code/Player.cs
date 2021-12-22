@@ -18,7 +18,7 @@ public class Player : MonoBehaviourPun
     public AudioClip hurtSfx;
     public AudioClip diedSfx;
 
-    public float Health { get; private set; }
+    public float Health { get; set; }
 
     protected HealthUI healthUI = null;
 
