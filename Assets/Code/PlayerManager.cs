@@ -10,6 +10,7 @@ public class PlayerManager : MonoBehaviour
     private IBeamableAPI _beamableApi;
 
     public static PlayerManager Instance { get; private set; }
+    public static float MouseSensitivity = -1;
 
     public bool IsGameOver { get; private set; }
     public bool IsPaused { get; private set; }
@@ -31,6 +32,8 @@ public class PlayerManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
+        if (MouseSensitivity < 0)
+            MouseSensitivity = mouseSensitivity;
     }
 
     private async void Start()
@@ -45,6 +48,7 @@ public class PlayerManager : MonoBehaviour
         for (int i = 0; i < players.Count; i++)
             players[i].SetIsMain(i == 0);
 
+        UIController.Instance.mouseSensitivitySlider.value = MouseSensitivity;
         UIController.Instance.mouseSensitivitySlider.onValueChanged.AddListener(MouseSensitivityChanged);
     }
 
@@ -166,7 +170,7 @@ public class PlayerManager : MonoBehaviour
 
     public void MouseSensitivityChanged(float newValue)
     {
-        mouseSensitivity = newValue;
+        MouseSensitivity = newValue;
     }
 
     public void IncrementScore(int score)

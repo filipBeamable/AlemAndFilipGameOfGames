@@ -22,8 +22,8 @@ public class CameraController : MonoBehaviour
     {
         get
         {
-            if (PlayerManager.Instance != null)
-                return PlayerManager.Instance.mouseSensitivity;
+            if (PlayerManager.MouseSensitivity > 0)
+                return PlayerManager.MouseSensitivity;
             return 250f;
         }
     }
