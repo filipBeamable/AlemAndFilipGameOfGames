@@ -1,15 +1,11 @@
-using Beamable;
-using Beamable.Common.Leaderboards;
 using Photon.Pun;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class PlayerManager : MonoBehaviour
 {
-    [SerializeField] private LeaderboardRef _leaderboardRef = null;
-
-    private IBeamableAPI _api;
-
     public static PlayerManager Instance { get; private set; }
 
     public bool IsGameOver { get; private set; }
@@ -29,7 +25,6 @@ public class PlayerManager : MonoBehaviour
 
     private void Awake()
     {
-        _api = API.Instance.GetResult();
         Instance = this;
     }
 
@@ -146,8 +141,9 @@ public class PlayerManager : MonoBehaviour
         IsGameOver = true;
     }
 
-    public void IncrementScore(int score)
+    public void GoToLeaderboard()
     {
-        _api.LeaderboardService.IncrementScore("leaderboards.lc", score);
+        PhotonNetwork.LeaveRoom();
+        SceneManager.LoadScene("Score2");
     }
 }

@@ -10,7 +10,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 {
     public static MainMenu Instance { get; set; }
 
-    public GameObject playButton;
+    public GameObject startPanel;
     public GameObject roomsPanel;
     public GameObject joiningRoomPanel;
     public GameObject waitingForOtherPlayerPanel;
@@ -29,14 +29,23 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     public void Join()
     {
-        playButton.SetActive(false);
-        roomsPanel.SetActive(true);
+        startPanel.SetActive(false);
 
         if (!PhotonNetwork.IsConnected)
         {
             PhotonNetwork.ConnectUsingSettings();
             PhotonNetwork.GameVersion = "1";
         }
+        else
+        {
+            PhotonNetwork.JoinLobby();
+            roomsPanel.SetActive(true);
+        }
+    }
+
+    public void GoToLeaderboard()
+    {
+        SceneManager.LoadScene("Score2");
     }
 
     public void LoadGameScene()
@@ -68,6 +77,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     {
         Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
         PhotonNetwork.JoinLobby();
+        roomsPanel.SetActive(true);
         //PhotonNetwork.JoinRandomRoom();
     }
 
