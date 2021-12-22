@@ -10,11 +10,10 @@ public class Player : MonoBehaviourPun
     public Material otherPlayerMat;
 
     [Header("Sounds")]
-    public AudioSource audioSource;
-    public AudioClip jumpSfx;
-    public AudioClip shootSfx;
-    public AudioClip hurtSfx;
-    public AudioClip diedSfx;
+    public AudioSource jumpSfx;
+    public AudioSource shootSfx;
+    public AudioSource hurtSfx;
+    public GameObject diedAudioPrefab;
 
     public float Health { get; set; }
 
@@ -52,7 +51,9 @@ public class Player : MonoBehaviourPun
         PlayerManager.Instance.UpdateActivePlayerHealth();
         if (Health <= 0)
         {
-            PlayerManager.Instance.IncrementScore(1);
+            if (!photonView.IsMine)
+                PlayerManager.Instance.IncrementScore(1);
+
             gameObject.SetActive(false);
             if (healthUI != null)
                 Destroy(healthUI.gameObject);
@@ -73,9 +74,8 @@ public class Player : MonoBehaviourPun
     }
 
 
-    protected void PlaySound(AudioClip clip) => audioSource.PlayOneShot(clip);
-    public void PlayJumpSfx() => PlaySound(jumpSfx);
-    public void PlayShootSfx() => PlaySound(shootSfx);
-    public void PlayHurtSfx() => PlaySound(hurtSfx);
-    public void PlayDiedSfx() => PlayerManager.Instance.audioSource.PlayOneShot(diedSfx);
+    public void PlayJumpSfx() => jumpSfx.Play();
+    public void PlayShootSfx() => shootSfx.Play();
+    public void PlayHurtSfx() => hurtSfx.Play();
+    public void PlayDiedSfx() => Instantiate(diedAudioPrefab).transform.position = transform.position;
 }
