@@ -16566,6 +16566,7 @@ MonoBehaviour:
   explosionPrefab: {fileID: 100014, guid: 5332791ebce075d4a9e56f4581e7fb47, type: 3}
   rifleDamage: 10
   mouseSensitivity: 200
+  maxTimeBeforeSwitch: 7
   masterPlayerPositions:
   - {fileID: 783235697}
   - {fileID: 852532350}

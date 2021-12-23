@@ -128,6 +128,7 @@ public class CharacterUI
 {
     public Image image;
     public Animator animator;
+    public TextMeshProUGUI index;
 
     public void PlayAnimAndChangeColor()
     {

@@ -119,8 +119,11 @@ public class PlayerManager : MonoBehaviour
         PlayerController oldPlayer = CurrentActivePlayer;
         currentActiveIndex = index;
         oldPlayer.SetIsMain(false);
+        UIController.Instance.myCharacters[players.IndexOf(oldPlayer)].index.color = Color.white;
+
         CurrentActivePlayer.SetIsMain(true);
         CurrentActivePlayer.cameraController.LerpFromOldPlayer(oldPlayer);
+        UIController.Instance.myCharacters[players.IndexOf(CurrentActivePlayer)].index.color = new Color(0f, 1f, 0.2f);
 
         UpdateActivePlayerHealth();
         ResetTimer();
