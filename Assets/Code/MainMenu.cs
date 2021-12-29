@@ -19,6 +19,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     [Space]
     public Transform roomsParent;
+    public TextMeshProUGUI regionName;
     public GameObject roomsButtonPrefab;
     public TMP_InputField roomNameInputField;
     public TextMeshProUGUI joiningRoomName;
@@ -36,25 +37,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
 
     private void OnRegionChanged(int index)
     {
-        string region = regionDropdown.options[index].text;
-        if (region == "USA East")
-            regionToken = "us";
-        if (region == "USA West")
-            regionToken = "usw";
-        if (region == "Europe")
-            regionToken = "eu";
-        if (region == "Australia")
-            regionToken = "au";
-        if (region == "Canada")
-            regionToken = "cae";
-        if (region == "Russia")
-            regionToken = "ru";
-        if (region == "South America")
-            regionToken = "sa";
-        if (region == "Turkey")
-            regionToken = "tr";
-        else
-            regionToken = "";
+        regionToken = RegionToCode(regionDropdown.options[index].text);
     }
 
     public void Join()
@@ -62,14 +45,18 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
         startPanel.SetActive(false);
         waitingToJoinPanel.SetActive(true);
 
-        if (!PhotonNetwork.IsConnected)
+        if (PhotonNetwork.IsConnected)
+            PhotonNetwork.Disconnect();
+
+        PhotonNetwork.GameVersion = "1";
+        if (string.IsNullOrEmpty(regionToken))
         {
             PhotonNetwork.ConnectUsingSettings();
-            PhotonNetwork.GameVersion = "1";
         }
         else
         {
-            PhotonNetwork.JoinLobby();
+            PhotonNetwork.NetworkingClient.AppId = PhotonNetwork.PhotonServerSettings.AppSettings.AppIdRealtime;
+            PhotonNetwork.ConnectToRegion(regionToken);
         }
     }
 
@@ -123,6 +110,7 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnConnectedToMaster()
     {
         Debug.Log("PUN Basics Tutorial/Launcher: OnConnectedToMaster() was called by PUN");
+        regionName.text = "Rooms in " + CodeToRegion(PhotonNetwork.CloudRegion);
         PhotonNetwork.JoinLobby();
     }
 
@@ -181,5 +169,52 @@ public class MainMenu : MonoBehaviourPunCallbacks, ILobbyCallbacks
     public override void OnDisconnected(DisconnectCause cause)
     {
         Debug.LogWarningFormat("PUN Basics Tutorial/Launcher: OnDisconnected() was called by PUN with reason {0}", cause);
+    }
+
+    private string RegionToCode(string region)
+    {
+        if (region == "USA East")
+            return "us";
+        else if (region == "USA West")
+            return "usw";
+        else if (region == "Europe")
+            return "eu";
+        else if (region == "Australia")
+            return "au";
+        else if (region == "Canada")
+            return "cae";
+        else if (region == "Russia")
+            return "ru";
+        else if (region == "South America")
+            return "sa";
+        else if (region == "Turkey")
+            return "tr";
+        else
+            return "";
+    }
+    private string CodeToRegion(string code)
+    {
+        code = code.ToLower();
+        if (code.Contains("/*"))
+            code = code.Substring(0, code.Length - 2);
+
+        if (code == "us")
+            return "USA East";
+        else if (code == "usw")
+            return "USA West";
+        else if (code == "eu")
+            return "Europe";
+        else if (code == "au")
+            return "Australia";
+        else if (code == "cae")
+            return "Canada";
+        else if (code == "ru")
+            return "Russia";
+        else if (code == "sa")
+            return "South America";
+        else if (code == "tr")
+            return "Turkey";
+        else
+            return code;
     }
 }

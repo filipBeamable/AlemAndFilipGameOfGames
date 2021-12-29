@@ -471,7 +471,7 @@ MonoBehaviour:
     m_PressedTrigger: Pressed
     m_SelectedTrigger: Selected
     m_DisabledTrigger: Disabled
-  m_Interactable: 0
+  m_Interactable: 1
   m_TargetGraphic: {fileID: 66743571}
   m_Template: {fileID: 629891139}
   m_CaptionText: {fileID: 387102705}
@@ -1660,6 +1660,10 @@ PrefabInstance:
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4373786682962239759, guid: 658e52cdd751b48478d9da3300ff9c59, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4449194982790149177, guid: 658e52cdd751b48478d9da3300ff9c59, type: 3}
       propertyPath: m_fontColor.b
       value: 0.26415092
@@ -2594,7 +2598,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8826322096927315237, guid: 658e52cdd751b48478d9da3300ff9c59, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: -0.000061035156
+      value: 0.000061035156
       objectReference: {fileID: 0}
     - target: {fileID: 8858242406304202921, guid: 658e52cdd751b48478d9da3300ff9c59, type: 3}
       propertyPath: m_textAlignment
@@ -6334,6 +6338,7 @@ MonoBehaviour:
   joiningRoomPanel: {fileID: 75528546}
   waitingForOtherPlayerPanel: {fileID: 1600498302}
   roomsParent: {fileID: 1256356563}
+  regionName: {fileID: 2024494532}
   roomsButtonPrefab: {fileID: 678650045137209553, guid: 44ef1004bfc9ecb4fb1c17be144dfe4a, type: 3}
   roomNameInputField: {fileID: 1387873314}
   joiningRoomName: {fileID: 1857276811}
